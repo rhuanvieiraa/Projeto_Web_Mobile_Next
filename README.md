@@ -133,10 +133,9 @@ Dessa forma, não será necessário escrever o mesmo código várias vezes, faci
 
 Essa parte será desenvolvida aos poucos durante os próximos check-ins.
 
-Este README será atualizado conforme o desenvolvimento do projeto.
 ---
 
-## 8. Uso de Inteligência Artificial
+## 7. Uso de Inteligência Artificial
 
 Durante a primeira etapa do Projeto 2, utilizamos ferramentas de Inteligência Artificial como apoio no desenvolvimento.
 
@@ -155,3 +154,5 @@ Esta seção será atualizada caso a IA seja utilizada novamente nas próximas e
 O wireframe permitiu visualizar previamente as principais telas e pensar na organização do projeto antes de começar a implementação.
 
 A partir da próxima etapa, iniciaremos a criação do projeto em Next.js e a migração da estrutura já desenvolvida anteriormente.
+
+Este README será atualizado conforme o desenvolvimento do projeto.
