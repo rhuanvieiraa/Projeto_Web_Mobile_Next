@@ -133,23 +133,7 @@ Dessa forma, não será necessário escrever o mesmo código várias vezes, faci
 
 Essa parte será desenvolvida aos poucos durante os próximos check-ins.
 
----
-
-## 7. Próximas Etapas
-
-O Projeto 2 será desenvolvido gradualmente durante as aulas.
-
-| Etapa | Desenvolvimento |
-|---|---|
-| Check-in 1 | Ideação e criação do wireframe |
-| Check-in 2 | Estrutura inicial em Next.js e migração do HTML e CSS |
-| Check-in 3 | Criação dos componentes React e interatividade |
-| Check-in 4 | Implementação das rotas do Next.js |
-| Check-in 5 | Criação e consumo da rota de API com JSON |
-| Final | Projeto completo e README atualizado |
-
 Este README será atualizado conforme o desenvolvimento do projeto.
-
 ---
 
 ## 8. Uso de Inteligência Artificial
