@@ -176,6 +176,14 @@ A IA foi utilizada principalmente para:
 - apoiar a criação do wireframe;
 - ajudar na pesquisa e organização das informações utilizadas no projeto.
 
+### Check-in 2
+
+Durante a migração para Next.js, a IA foi utilizada para:
+
+- orientar a configuração do projeto de acordo com o conteúdo apresentado em aula;
+- identificar mudanças necessárias, como `class` para `className` e `for` para `htmlFor`;
+- ajudar na identificação e correção de erros durante a migração, como problemas com `<textarea>`, caminhos de imagens e configuração do ambiente;
+
 O uso da ferramenta foi feito como apoio ao desenvolvimento, e o grupo será responsável por compreender e explicar todas as partes implementadas no projeto.
 
 Esta seção será atualizada caso a IA seja utilizada novamente nas próximas etapas.
