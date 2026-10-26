@@ -1,0 +1,469 @@
+/*
+Rhuan Vieira de Souza - RA: 10755828
+Caio Borges Morato - RA: 10437025
+Felipe Del Giudice Menezes - RA: 10726771
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --azul-escuro: #0b2f55;
+    --azul-principal: #0e5aa7;
+    --azul-claro: #eaf3fb;
+    --amarelo: #f4b400;
+    --branco: #ffffff;
+    --cinza-claro: #f4f7fb;
+    --cinza-borda: #d8e0e8;
+    --texto: #1f2937;
+    --texto-secundario: #667085;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--azul-claro);
+    color: var(--texto);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: var(--azul-escuro);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 8%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header img {
+    width: 220px;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--branco);
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: var(--amarelo);
+}
+
+#menu-btn {
+    display: none;
+}
+
+main {
+    width: 100%;
+    flex: 1;
+}
+
+.apresentacao {
+    background-image:
+        linear-gradient(
+            rgba(11, 47, 85, 0.55),
+            rgba(11, 47, 85, 0.55)
+        ),
+        url("/imagens/fundo-sobre.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 340px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 60px 10%;
+}
+
+.apresentacao-conteudo {
+    max-width: 600px;
+}
+
+.apresentacao h1 {
+    font-size: 48px;
+    line-height: 1.1;
+    color: var(--branco);
+    margin-bottom: 20px;
+}
+
+.apresentacao p {
+    font-size: 20px;
+    line-height: 1.7;
+    color: var(--branco);
+    margin-bottom: 30px;
+}
+
+.apresentacao a {
+    display: inline-block;
+    background-color: var(--azul-principal);
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 24px;
+    border-radius: 8px;
+    border-left: 4px solid var(--amarelo);
+    transition: 0.2s;
+}
+
+.apresentacao a:hover {
+    background-color: var(--azul-escuro);
+    transform: translateY(-2px);
+}
+
+.area-conteudo {
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto;
+    display: flex;
+    gap: 35px;
+    align-items: flex-start;
+}
+
+#denuncias-recentes {
+    width: 65%;
+}
+
+#denuncias-recentes h2 {
+    color: var(--azul-escuro);
+    margin-bottom: 25px;
+}
+
+.card-denuncia {
+    background-color: var(--branco);
+    border: 1px solid var(--cinza-borda);
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 20px;
+}
+
+.card-denuncia h3 {
+    color: var(--azul-principal);
+    margin-bottom: 12px;
+}
+
+.card-denuncia p {
+    margin-bottom: 8px;
+}
+
+.pagina-denuncia {
+    width: 90%;
+    max-width: 750px;
+    margin: 50px auto;
+}
+
+.sobre-nos {
+    width: 35%;
+    background-color: var(--branco);
+    padding: 30px;
+    border-radius: 12px;
+    border-top: 4px solid var(--amarelo);
+    transform: translateY(-2px);
+}
+
+.sobre-nos h2 {
+    color: var(--azul-escuro);
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.sobre-nos p {
+    color: var(--texto-secundario);
+    margin-bottom: 16px;
+    line-height: 1.7;
+}
+
+#denuncia {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto 50px auto;
+}
+
+#denuncia h2 {
+    color: var(--azul-escuro);
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+#historico {
+    width: 90%;
+    max-width: 900px;
+    margin: 50px auto;
+}
+
+#historico h1 {
+    color: var(--azul-escuro);
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+#historico .card-denuncia {
+    width: 100%;
+}
+
+label {
+    font-weight: 600;
+    color: var(--azul-escuro);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--cinza-borda);
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: var(--branco);
+    margin-top: 5px;
+}
+
+form button {
+    background-color: var(--azul-principal);
+    color: var(--branco);
+    border: none;
+    border-radius: 8px;
+    padding: 13px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+form button:hover {
+    background-color: var(--azul-escuro);
+    transform: translateY(-2px);
+}
+
+footer {
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 8%;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--amarelo);
+}
+
+footer p {
+    font-size: 14px;
+    text-align: center;
+}
+
+.login-apresentacao {
+    text-align: center;
+    padding: 45px 5% 25px 5%;
+}
+
+.login-apresentacao h1 {
+    color: var(--azul-escuro);
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.login-apresentacao p {
+    color: var(--texto-secundario);
+    font-size: 16px;
+}
+
+.area-conta {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto 50px auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 30px;
+}
+
+#area-login,
+#cadastro {
+    width: 50%;
+    background-color: var(--branco);
+    padding: 30px;
+    border-radius: 12px;
+    border-top: 4px solid var(--amarelo);
+}
+
+#area-login h2,
+#cadastro h2 {
+    color: var(--azul-escuro);
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+#form-login,
+#form-cadastro {
+    width: 100%;
+}
+
+#form-login input,
+#form-cadastro input {
+    width: 100%;
+}
+
+#form-login button,
+#form-cadastro button {
+    width: 100%;
+}
+
+#area-login p {
+    text-align: center;
+    color: var(--texto-secundario);
+}
+
+#area-login p a {
+    color: var(--azul-principal);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 5%;
+        flex-wrap: wrap;
+    }
+
+    header img {
+        width: 110px;
+    }
+
+    #menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--branco);
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+    #menu-navegacao {
+        width: 100%;
+        background-color: var(--azul-escuro);
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: 0.3s;
+    }
+
+    #menu-navegacao.menu-aberto {
+        max-height: 250px;
+        opacity: 1;
+    }
+
+    #menu-navegacao ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    #menu-navegacao li {
+        width: 100%;
+        text-align: center;
+    }
+
+    #menu-navegacao a {
+        display: block;
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    .apresentacao {
+        min-height: auto;
+        padding: 40px 5%;
+        background-position: center;
+    }
+
+    .apresentacao h1 {
+        font-size: 34px;
+    }
+
+    .apresentacao p {
+        font-size: 16px;
+    }
+
+    .area-conteudo {
+        width: 90%;
+        flex-direction: column;
+    }
+
+    #denuncias-recentes {
+        width: 100%;
+    }
+
+    .sobre-nos {
+        width: 100%;
+    }
+
+    #denuncia {
+        width: 90%;
+        padding: 20px;
+    }
+
+    footer {
+        padding: 20px 5%;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .login-apresentacao {
+        padding: 35px 5% 20px 5%;
+    }
+
+    .login-apresentacao h1 {
+        font-size: 32px;
+    }
+
+    .area-conta {
+        flex-direction: column;
+    }
+
+    #area-login,
+    #cadastro {
+        width: 100%;
+    }
+}
