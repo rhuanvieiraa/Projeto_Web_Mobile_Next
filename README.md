@@ -133,6 +133,35 @@ Dessa forma, não será necessário escrever o mesmo código várias vezes, faci
 
 Essa parte será desenvolvida aos poucos durante os próximos check-ins.
 
+## Check-in 2 - Migração do HTML e CSS
+
+Nesta etapa, iniciamos a migração do Conecta Cidade para Next.js.
+
+As páginas do Projeto 1, que anteriormente eram arquivos HTML separados, foram convertidas para páginas utilizando JSX dentro da estrutura do Next.js.
+
+Foram migradas as seguintes páginas:
+
+- Página Inicial;
+- Nova Denúncia;
+- Login e Cadastro;
+- Minhas Denúncias.
+
+Durante a migração, algumas adaptações foram necessárias, como:
+
+- troca de `class` por `className`;
+- troca de `for` por `htmlFor`;
+- fechamento correto das tags em JSX;
+- organização das páginas através das rotas do Next.js;
+- migração do CSS geral para `globals.css`;
+- transferência das imagens para a pasta `public`.
+
+A identidade visual e a responsividade do Projeto 1 foram mantidas.
+
+<img width="1834" height="997" alt="image" src="https://github.com/user-attachments/assets/81247d3c-f31b-45b6-a3e5-8f8fb08566e2" />
+
+
+Neste check-in, o foco foi a migração da estrutura HTML e do CSS. As funcionalidades JavaScript serão adaptadas para React nas próximas etapas.
+
 ---
 
 ## 7. Uso de Inteligência Artificial
