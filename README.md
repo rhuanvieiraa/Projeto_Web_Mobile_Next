@@ -190,6 +190,12 @@ Esta seção será atualizada caso a IA seja utilizada novamente nas próximas e
 
 O wireframe permitiu visualizar previamente as principais telas e pensar na organização do projeto antes de começar a implementação.
 
-A partir da próxima etapa, iniciaremos a criação do projeto em Next.js e a migração da estrutura já desenvolvida anteriormente.
+A partir da próxima etapa, iniciaremos a criação do projeto em Next.js e a migração da estrutura já desenvolvida.
+
+### Início da Componentização
+
+Após concluir a migração das páginas e do CSS para Next.js, iniciamos a componentização do projeto em React.
+
+Os primeiros elementos separados em componentes reutilizáveis foram o `Header` e o `Footer`, que antes estavam repetidos em várias páginas.
 
 Este README será atualizado conforme o desenvolvimento do projeto.
