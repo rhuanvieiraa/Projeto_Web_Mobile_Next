@@ -4,27 +4,12 @@ Caio Borges Morato - RA: 10437025
 Felipe Del Giudice Menezes - RA: 10726771
 */
 
+
+import Header from "src/app/components/header";
 export default function Home() {
     return (
         <>
-            <header id="top">
-                <img src="/imagens/conecta-cabecalho.png"
-                    alt="Logo Conecta Cidade"/>
-                <button
-                    id="menu-btn"
-                    aria-expanded="false"
-                    aria-label="Abrir menu">
-                    ☰ </button>
-
-                <nav id="menu-navegacao">
-                    <ul>
-                        <li><a href="/">Página Inicial</a></li>
-                        <li><a href="/denuncia">Criar Denúncia</a></li>
-                        <li><a href="/minhas-denuncias">Denúncias</a></li>
-                        <li><a href="/login">Login</a></li>
-                    </ul>
-                </nav>
-            </header>
+            <Header />
 
             <main>
                 <section className="apresentacao">
@@ -133,13 +118,7 @@ export default function Home() {
                 </section>
             </main>
 
-            <footer>
-                <div className="footer-links">
-                    <a href="#">Contato</a>
-                    <a href="#top">Voltar ao Início</a>
-                </div>
-                <p> © 2026 Conecta Cidade - Projeto Extensionista </p>
-            </footer>
+            <Footer />
         </>
     );
 }
