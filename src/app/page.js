@@ -5,12 +5,12 @@ Felipe Del Giudice Menezes - RA: 10726771
 */
 
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import CardDenuncia from "../components/CardDenuncia";
-import FormularioDenuncia from "../components/FormularioDenuncia";
-import Hero from "../components/Hero";
-import SobreNos from "../components/SobreNos";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import CardDenuncia from "./components/CardDenuncia";
+import FormularioDenuncia from "./components/FormularioDenuncia";
+import Hero from "./components/Hero";
+import SobreNos from "./components/SobreNos";
 
 export default function Home() {
     return (
