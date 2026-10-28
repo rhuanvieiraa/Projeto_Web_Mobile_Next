@@ -18,19 +18,19 @@ export default function MinhasDenuncias() {
                     <h1>Denúncias realizadas</h1>
 
                     <CardDenuncia
-                            titulo = "Buraco na via principal"
-                            protocolo = "#2026001"
-                            data = "10/03/2026"
-                            status = "Pendente"
-                            descricao = "Existe um buraco na pista provocando risco aos motoristas e ciclistas."
+                        titulo = "Buraco na via principal"
+                        protocolo = "#2026001"
+                        data = "10/03/2026"
+                        status = "Pendente"
+                        descricao = "Existe um buraco na pista provocando risco aos motoristas e ciclistas."
                     />
 
                     <CardDenuncia
-                            titulo = "Vazamento de água"
-                            protocolo = "#2026002"
-                            data = "15/03/2026"
-                            status = "Resolvido"
-                            descricao = "Vazamento próximo a calçada principal do bairro."
+                        titulo = "Vazamento de água"
+                        protocolo = "#2026002"
+                        data = "15/03/2026"
+                        status = "Resolvido"
+                        descricao = "Vazamento próximo a calçada principal do bairro."
                     />
 
                     <div id="lista-denuncias"></div>

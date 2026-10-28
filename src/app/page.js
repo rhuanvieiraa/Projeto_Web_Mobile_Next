@@ -26,17 +26,17 @@ export default function Home() {
                         <h2>Denúncias Recentes</h2>
                         
                         <CardDenuncia
-                                    titulo = "Buraco na via principal"
-                                    bairro = "Pinheiros"
-                                    status = "Pendente"
-                                    descricao = "Existe um buraco na pista da direita provocando risco aos motoristas."
+                            titulo = "Buraco na via principal"
+                            bairro = "Pinheiros"
+                            status = "Pendente"
+                            descricao = "Existe um buraco na pista da direita provocando risco aos motoristas."
                         />
                         
                         <CardDenuncia
-                                    titulo="Poste com Iluminação Queimada"
-                                    bairro="Butantã"
-                                    status="Resolvido"
-                                    descricao="Rua escura perto da travessa principal."
+                            titulo="Poste com Iluminação Queimada"
+                            bairro="Butantã"
+                            status="Resolvido"
+                            descricao="Rua escura perto da travessa principal."
                         />
 
                     </div>
