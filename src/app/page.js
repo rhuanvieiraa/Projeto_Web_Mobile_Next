@@ -9,6 +9,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CardDenuncia from "../components/CardDenuncia";
 import FormularioDenuncia from "../components/FormularioDenuncia";
+import Hero from "../components/Hero";
+import SobreNos from "../components/SobreNos";
 
 export default function Home() {
     return (
@@ -16,14 +18,8 @@ export default function Home() {
             <Header />
 
             <main>
-                <section className="apresentacao">
-                    <div className="apresentacao-conteudo">
-                        <h1>Ajude a melhorar a sua cidade.</h1>
-                        <p> Registre problemas do seu bairro, acompanhe ocorrências
-                            e participe da transformação da comunidade. </p>
-                        <a href="#denuncia">Fazer uma denúncia</a>
-                    </div>
-                </section>
+                
+                <Hero />
 
                 <section className="area-conteudo">
                     <div id="denuncias-recentes">
@@ -45,15 +41,8 @@ export default function Home() {
 
                     </div>
 
-                    <aside className="sobre-nos">
-                        <h2>Sobre Nós</h2>
-                        <p> O Conecta Cidade nasceu com a proposta de aproximar
-                            a população dos problemas urbanos do dia a dia. </p>
+                    <SobreNos />
 
-                        <p> Nossa ideia é facilitar o registro de ocorrências
-                            e permitir que a comunidade acompanhe situações
-                            pendentes e resolvidas. </p>
-                    </aside>
                 </section>
 
                 <section id="denuncia">
