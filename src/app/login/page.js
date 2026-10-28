@@ -4,6 +4,11 @@ Caio Borges Morato - RA: 10437025
 Felipe Del Giudice Menezes - RA: 10726771
 */
 
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import FormLogin from "../components/FormLogin";
+import FormCadastro from "../components/FormCadastro";
+
 export default function Login() {
     return (
         <>
@@ -17,83 +22,11 @@ export default function Login() {
                 </section>
 
                 <div className="area-conta">
-                    <section id="area-login">
-                        <h2>Login</h2>
+                    
+                    <FormLogin />
 
-                        <form id="form-login">
-                            <label htmlFor="email"> E-mail: </label>
-                            <br />
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="Digite seu e-mail"
-                                required/>
-                            <br />
-                            <br />
+                    <FormCadastro />
 
-                            <label htmlFor="senha"> Senha: </label>
-                            <br />
-                            <input
-                                type="password"
-                                id="senha"
-                                name="senha"
-                                placeholder="Digite sua senha"
-                                required/>
-                            <br />
-                            <br />
-
-                            <button type="submit"> Entrar </button>
-                        </form>
-
-                        <br />
-
-                        <p>
-                            Ainda não possui uma conta?
-                            <a href="#cadastro"> Cadastre-se </a>
-                        </p>
-                    </section>
-
-                    <section id="cadastro">
-                        <h2>Cadastro</h2>
-
-                        <form id="form-cadastro">
-                            <label htmlFor="nome-completo"> Nome completo: </label>
-                            <br />
-                            <input
-                                type="text"
-                                id="nome-completo"
-                                name="nome-completo"
-                                placeholder="Digite seu nome completo"
-                                required/>
-                            <br />
-                            <br />
-
-                            <label htmlFor="email-cadastro"> E-mail: </label>
-                            <br />
-                            <input
-                                type="email"
-                                id="email-cadastro"
-                                name="email-cadastro"
-                                placeholder="Digite seu e-mail"
-                                required/>
-                            <br />
-                            <br />
-
-                            <label htmlFor="senha-cadastro"> Senha: </label>
-                            <br />
-                            <input
-                                type="password"
-                                id="senha-cadastro"
-                                name="senha-cadastro"
-                                placeholder="Digite sua senha"
-                                required/>
-                            <br />
-                            <br />
-
-                            <button type="submit"> Cadastrar </button>
-                        </form>
-                    </section>
                 </div>
             </main>
 

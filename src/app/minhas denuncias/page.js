@@ -4,6 +4,10 @@ Caio Borges Morato - RA: 10437025
 Felipe Del Giudice Menezes - RA: 10726771
 */
 
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import CardDenuncia from "../components/CardDenuncia";
+
 export default function MinhasDenuncias() {
     return (
         <>
@@ -13,23 +17,21 @@ export default function MinhasDenuncias() {
                 <section id="historico">
                     <h1>Denúncias realizadas</h1>
 
-                    <article className="card-denuncia">
-                        <h3>Buraco na via principal</h3>
-                        <p> <strong>Protocolo:</strong> #2026001 </p>
-                        <p> <strong>Data:</strong> 10/03/2026 </p>
-                        <p> <strong>Status:</strong> Pendente </p>
-                        <p> Existe um buraco na pista da direita provocando
-                            risco aos motoristas e ciclistas. </p>
-                    </article>
+                    <CardDenuncia
+                            titulo = "Buraco na via principal"
+                            protocolo = "#2026001"
+                            data = "10/03/2026"
+                            status = "Pendente"
+                            descricao = "Existe um buraco na pista provocando risco aos motoristas e ciclistas."
+                    />
 
-                    <article className="card-denuncia">
-                        <h3>Vazamento de água</h3>
-                        <p> <strong>Protocolo:</strong> #2026002 </p>
-                        <p> <strong>Data:</strong> 15/03/2026 </p>
-                        <p> <strong>Status:</strong> Resolvido </p>
-                        <p> Vazamento de água próximo à calçada principal
-                            do bairro. </p>
-                    </article>
+                    <CardDenuncia
+                            titulo = "Vazamento de água"
+                            protocolo = "#2026002"
+                            data = "15/03/2026"
+                            status = "Resolvido"
+                            descricao = "Vazamento próximo a calçada principal do bairro."
+                    />
 
                     <div id="lista-denuncias"></div>
                 </section>

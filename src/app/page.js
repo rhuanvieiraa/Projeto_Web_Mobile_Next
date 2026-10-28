@@ -5,7 +5,11 @@ Felipe Del Giudice Menezes - RA: 10726771
 */
 
 
-import Header from "src/app/components/header";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import CardDenuncia from "../components/CardDenuncia";
+import FormularioDenuncia from "../components/FormularioDenuncia";
+
 export default function Home() {
     return (
         <>
@@ -24,24 +28,21 @@ export default function Home() {
                 <section className="area-conteudo">
                     <div id="denuncias-recentes">
                         <h2>Denúncias Recentes</h2>
-                        <article className="card-denuncia">
-                            <h3>Buraco na via principal</h3>
-                            <p> <strong>Bairro:</strong> Pinheiros </p>
+                        
+                        <CardDenuncia
+                                    titulo = "Buraco na via principal"
+                                    bairro = "Pinheiros"
+                                    status = "Pendente"
+                                    descricao = "Existe um buraco na pista da direita provocando risco aos motoristas."
+                        />
+                        
+                        <CardDenuncia
+                                    titulo="Poste com Iluminação Queimada"
+                                    bairro="Butantã"
+                                    status="Resolvido"
+                                    descricao="Rua escura perto da travessa principal."
+                        />
 
-                            <p> <strong>Status:</strong> Pendente </p>
-
-                            <p> Existe um buraco na pista da direita provocando
-                                risco aos motoristas. </p>
-                        </article>
-
-                        <article className="card-denuncia">
-                            <h3>Poste com Iluminação Queimada</h3>
-                            <p> <strong>Bairro:</strong> Butantã </p>
-
-                            <p> <strong>Status:</strong> Resolvido </p>
-
-                            <p> Rua escura perto da travessa principal. </p>
-                        </article>
                     </div>
 
                     <aside className="sobre-nos">
@@ -57,64 +58,7 @@ export default function Home() {
 
                 <section id="denuncia">
                     <h2>Registrar Ocorrência</h2>
-                    <form id="form-denuncia">
-                        <label htmlFor="titulo"> Título da Ocorrência: </label>
-                        <br />
-                        <input
-                            type="text"
-                            id="titulo"
-                            name="titulo"
-                            placeholder="Ex: Buraco na pista"
-                            required/>
-                        <br />
-                        <br />
-                        <label htmlFor="categoria"> Categoria: </label>
-                        <br />
-                        <select
-                            id="categoria"
-                            name="categoria"
-                            required>
-                            <option value="">Selecione uma opção</option>
-                            <option value="asfalto">Asfalto / Buraco</option>
-                            <option value="iluminacao">Iluminação Pública</option>
-                            <option value="lixo">Lixo / Entulho</option>
-                            <option value="outros">Outros</option>
-                        </select>
-                        <br />
-                        <br />
-                        <label htmlFor="bairro"> Bairro / Endereço: </label>
-                        <br />
-                        <input
-                            type="text"
-                            id="bairro"
-                            name="bairro"
-                            placeholder="Ex: Pinheiros"
-                            required/>
-                        <br />
-                        <br />
-                        <label htmlFor="foto"> Foto do Problema (Opcional): </label>
-                        <br />
-                        <input
-                            type="file"
-                            id="foto"
-                            name="foto"
-                            accept="image/*"/>
-                        <br />
-                        <br />
-                        <label htmlFor="descricao"> Descrição detalhada: </label>
-                        <br />
-                        <textarea
-                          id="descricao"
-                          name="descricao"
-                          rows="4"
-                          placeholder="Conte mais detalhes..."
-                          required/>
-                        <br />
-                        <br />
-                        <button type="submit">
-                            Enviar Denúncia
-                        </button>
-                    </form>
+                    <FormularioDenuncia />
                 </section>
             </main>
 
