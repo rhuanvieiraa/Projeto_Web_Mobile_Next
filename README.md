@@ -133,9 +133,11 @@ Dessa forma, não será necessário escrever o mesmo código várias vezes, faci
 
 Essa parte será desenvolvida aos poucos durante os próximos check-ins.
 
-## Check-in 2 - Migração do HTML e CSS
+---
 
-Nesta etapa, iniciamos a migração do Conecta Cidade para Next.js.
+### Check-in 2 - Migração do HTML e CSS
+
+Nesta etapa, foi criada a estrutura inicial do projeto utilizando Next.js.
 
 As páginas do Projeto 1, que anteriormente eram arquivos HTML separados, foram convertidas para páginas utilizando JSX dentro da estrutura do Next.js.
 
@@ -151,51 +153,62 @@ Durante a migração, algumas adaptações foram necessárias, como:
 - troca de `class` por `className`;
 - troca de `for` por `htmlFor`;
 - fechamento correto das tags em JSX;
-- organização das páginas através das rotas do Next.js;
-- migração do CSS geral para `globals.css`;
-- transferência das imagens para a pasta `public`.
+- criação das páginas dentro da estrutura de rotas do Next.js;
+- migração do CSS geral para `globals.css`.
 
 A identidade visual e a responsividade do Projeto 1 foram mantidas.
 
 <img width="1834" height="997" alt="image" src="https://github.com/user-attachments/assets/81247d3c-f31b-45b6-a3e5-8f8fb08566e2" />
 
-
-Neste check-in, o foco foi a migração da estrutura HTML e do CSS. As funcionalidades JavaScript serão adaptadas para React nas próximas etapas.
+Neste check-in, o foco foi a migração da estrutura HTML e do CSS para o Next.js.
 
 ---
 
+### Início do Check-in 3 - Componentização
+
+Após concluir a migração das páginas e do CSS, iniciamos a componentização da aplicação utilizando React.
+
+No Projeto 1, alguns elementos eram repetidos em páginas diferentes. Com React, esses elementos passaram a ser separados em componentes reutilizáveis.
+
+Até o momento foram criados os seguintes componentes:
+
+- `Header`: responsável pelo cabeçalho e menu de navegação;
+- `Footer`: responsável pelo rodapé;
+- `Hero`: responsável pela área principal de apresentação da página inicial;
+- `SobreNos`: responsável pela seção de apresentação do projeto;
+- `CardDenuncia`: responsável pela estrutura visual das denúncias;
+- `FormularioDenuncia`: responsável pelo formulário de registro de ocorrências;
+- `FormLogin`: responsável pelo formulário de login;
+- `FormCadastro`: responsável pelo formulário de cadastro.
+
+O componente `CardDenuncia` também começou a utilizar **props**, permitindo reutilizar o mesmo componente com informações diferentes.
+
 ## 7. Uso de Inteligência Artificial
 
-Durante a primeira etapa do Projeto 2, utilizamos ferramentas de Inteligência Artificial como apoio no desenvolvimento.
+Durante o desenvolvimento do Projeto 2, utilizamos Inteligência Artificial como ferramenta de apoio ao aprendizado e à implementação.
 
-A IA foi utilizada principalmente para:
+### Check-in 1
 
-- auxiliar na análise do Projeto 1;
+A IA foi utilizada para:
+
 - ajudar na organização das ideias;
 - auxiliar na estruturação do README;
-- apoiar a criação do wireframe;
-- ajudar na pesquisa e organização das informações utilizadas no projeto.
+- apoiar a criação do wireframe.
 
 ### Check-in 2
 
 Durante a migração para Next.js, a IA foi utilizada para:
 
-- orientar a configuração do projeto de acordo com o conteúdo apresentado em aula;
-- identificar mudanças necessárias, como `class` para `className` e `for` para `htmlFor`;
-- ajudar na identificação e correção de erros durante a migração, como problemas com `<textarea>`, caminhos de imagens e configuração do ambiente;
+- auxiliar na conversão das páginas HTML para JSX;
+- ajudar na identificação e correção de erros durante a migração, como problemas com `<textarea>`, imports e configuração do ambiente;
+- auxiliar no uso do Git e GitHub para atualização do repositório.
 
-O uso da ferramenta foi feito como apoio ao desenvolvimento, e o grupo será responsável por compreender e explicar todas as partes implementadas no projeto.
+### Início do Check-in 3
 
-Esta seção será atualizada caso a IA seja utilizada novamente nas próximas etapas.
+Durante o início da componentização, a IA foi utilizada para:
 
-O wireframe permitiu visualizar previamente as principais telas e pensar na organização do projeto antes de começar a implementação.
+- orientar a criação de componentes reutilizáveis;
+- auxiliar no entendimento e utilização de props;
+- ajudar na organização dos imports entre as páginas e os componentes.
 
-A partir da próxima etapa, iniciaremos a criação do projeto em Next.js e a migração da estrutura já desenvolvida.
-
-### Início da Componentização
-
-Após concluir a migração das páginas e do CSS para Next.js, iniciamos a componentização do projeto em React.
-
-Os primeiros elementos separados em componentes reutilizáveis foram o `Header` e o `Footer`, que antes estavam repetidos em várias páginas.
-
-Este README será atualizado conforme o desenvolvimento do projeto.
+A IA foi utilizada como ferramenta de apoio, e o grupo continua responsável por compreender, revisar e explicar todas as partes implementadas no projeto.
