@@ -7,7 +7,7 @@ Felipe Del Giudice Menezes - RA: 10726771
 export default function CardDenuncia(props) {
     return (
         <article className = "card-denuncia">
-            <h3> (props.titulo) </h3>
+            <h3> {props.titulo} </h3>
 
             {props.protocolo && (
                 <p> <strong> Protocolo: </strong> {props.protocolo} </p>
