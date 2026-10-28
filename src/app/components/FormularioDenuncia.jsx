@@ -24,7 +24,7 @@ export default function FormularioDenuncia() {
                 id="categoria"
                 name="categoria"
                 required>
-                <option value="">Selecione uma opçaõ</option>
+                <option value="">Selecione uma opção</option>
                 <option value="asfalto"> Asfalto / Buraco </option>
                 <option value="iluminacao"> Iluminação Pública </option>
                 <option value="lixo"> Lixo / Entulho </option>
