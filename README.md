@@ -164,13 +164,13 @@ Neste check-in, o foco foi a migração da estrutura HTML e do CSS para o Next.j
 
 ---
 
-### Início do Check-in 3 - Componentização
+### Check-in 3 - Componentização e Interatividade
 
 Após concluir a migração das páginas e do CSS, iniciamos a componentização da aplicação utilizando React.
 
 No Projeto 1, alguns elementos eram repetidos em páginas diferentes. Com React, esses elementos passaram a ser separados em componentes reutilizáveis.
 
-Até o momento foram criados os seguintes componentes:
+Foram criados os seguintes componentes:
 
 - `Header`: responsável pelo cabeçalho e menu de navegação;
 - `Footer`: responsável pelo rodapé;
@@ -181,9 +181,59 @@ Até o momento foram criados os seguintes componentes:
 - `FormLogin`: responsável pelo formulário de login;
 - `FormCadastro`: responsável pelo formulário de cadastro.
 
-O componente `CardDenuncia` também começou a utilizar **props**, permitindo reutilizar o mesmo componente com informações diferentes.
+O componente `CardDenuncia` utiliza **props**, permitindo que o mesmo componente seja reutilizado com informações diferentes.
 
-## 7. Uso de Inteligência Artificial
+Entre os dados enviados por props estão:
+
+- id;
+- título;
+- bairro;
+- status;
+- protocolo;
+- data;
+- descrição.
+
+Além da componentização, também iniciamos a migração das funcionalidades que anteriormente estavam no arquivo JavaScript do Projeto 1.
+
+Foram utilizados recursos do React como `useState` e `useEffect`.
+
+Entre as funcionalidades implementadas estão:
+
+- abertura e fechamento do menu mobile utilizando `useState`;
+- controle dos campos do formulário de login;
+- controle dos campos do formulário de cadastro;
+- controle dos campos do formulário de denúncia;
+- cadastro simulado de usuário;
+- login com verificação dos dados cadastrados;
+- controle de usuário logado;
+- logout;
+- leitura do estado de login utilizando `useEffect`.
+
+Para a simulação de cadastro e login, foi utilizado o `localStorage`.
+
+O formulário de denúncia utiliza `useState` para controlar seus campos, porém as denúncias ainda não são armazenadas de forma permanente, pois a próxima etapa do projeto utilizará uma API interna do Next.js para trabalhar com os dados das ocorrências.
+
+### Check-in 4 - Rotas
+
+Nesta etapa, trabalhamos com as rotas da aplicação utilizando o sistema de rotas do Next.js.
+
+O projeto possui as seguintes rotas simples:
+
+- `/` - Página Inicial;
+- `/login` - Login e Cadastro;
+- `/denuncia` - Criação de Denúncia;
+- `/minhas-denuncias` - Visualização das Denúncias.
+
+Também foi criada uma rota dinâmica para visualizar os detalhes de cada denúncia.
+
+
+A estrutura utilizada foi:
+
+``text
+src/app/denuncias/[id]/page.js
+``
+
+##   7. Uso de Inteligência Artificial
 
 Durante o desenvolvimento do Projeto 2, utilizamos Inteligência Artificial como ferramenta de apoio ao aprendizado e à implementação.
 
@@ -210,5 +260,13 @@ Durante o início da componentização, a IA foi utilizada para:
 - orientar a criação de componentes reutilizáveis;
 - auxiliar no entendimento e utilização de props;
 - ajudar na organização dos imports entre as páginas e os componentes.
+
+### Check-in 4
+
+Durante a implementação das rotas, a IA foi utilizada para:
+
+- auxiliar na organização das rotas do Next.js;
+- orientar a criação da rota dinâmica utilizando `[id]`;
+- auxiliar na identificação e correção de problemas durante os testes das rotas.
 
 A IA foi utilizada como ferramenta de apoio, e o grupo continua responsável por compreender, revisar e explicar todas as partes implementadas no projeto.
