@@ -26,6 +26,7 @@ export default function Home() {
                         <h2>Denúncias Recentes</h2>
                         
                         <CardDenuncia
+                            id={1}
                             titulo = "Buraco na via principal"
                             bairro = "Pinheiros"
                             status = "Pendente"
@@ -33,6 +34,7 @@ export default function Home() {
                         />
                         
                         <CardDenuncia
+                            id={2}
                             titulo="Poste com Iluminação Queimada"
                             bairro="Butantã"
                             status="Resolvido"

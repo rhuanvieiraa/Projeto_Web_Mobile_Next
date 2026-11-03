@@ -18,6 +18,7 @@ export default function MinhasDenuncias() {
                     <h1>Denúncias realizadas</h1>
 
                     <CardDenuncia
+                        id={1}
                         titulo = "Buraco na via principal"
                         protocolo = "#2026001"
                         data = "10/03/2026"
@@ -26,6 +27,7 @@ export default function MinhasDenuncias() {
                     />
 
                     <CardDenuncia
+                        id={2}  
                         titulo = "Vazamento de água"
                         protocolo = "#2026002"
                         data = "15/03/2026"
