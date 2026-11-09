@@ -6,22 +6,17 @@ Felipe Del Giudice Menezes - RA: 10726771
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import DetalheDenuncia from "../../components/DetalheDenuncia";
 
-export default async function DetalheDenuncia({ params }) {
+export default async function Detalhe({ params }) {
     const { id } = await params;
 
     return (
         <>
             <Header />
 
-            <main>
-                <section id="historico">
-                    <h1>Detalhes da Denúncia</h1>
-
-                    <p>
-                        <strong>ID da denúncia:</strong> {id}
-                    </p>
-                </section>
+            <main> 
+                <DetalheDenuncia id={id} />
             </main>
 
             <Footer />

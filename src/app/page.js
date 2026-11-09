@@ -4,7 +4,9 @@ Caio Borges Morato - RA: 10437025
 Felipe Del Giudice Menezes - RA: 10726771
 */
 
+"use client";
 
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CardDenuncia from "./components/CardDenuncia";
@@ -13,43 +15,46 @@ import Hero from "./components/Hero";
 import SobreNos from "./components/SobreNos";
 
 export default function Home() {
+    const [denuncias, setDenuncias] = useState([]);
+
+    useEffect(() => {
+        fetch("/api/denuncias")
+            .then((resposta) => resposta.json())
+            .then ((dados) => {
+                setDenuncias(dados);
+            });
+    },[]);
+
     return (
         <>
             <Header />
 
             <main>
-                
                 <Hero />
 
                 <section className="area-conteudo">
                     <div id="denuncias-recentes">
-                        <h2>Denúncias Recentes</h2>
-                        
-                        <CardDenuncia
-                            id={1}
-                            titulo = "Buraco na via principal"
-                            bairro = "Pinheiros"
-                            status = "Pendente"
-                            descricao = "Existe um buraco na pista da direita provocando risco aos motoristas."
-                        />
-                        
-                        <CardDenuncia
-                            id={2}
-                            titulo="Poste com Iluminação Queimada"
-                            bairro="Butantã"
-                            status="Resolvido"
-                            descricao="Rua escura perto da travessa principal."
-                        />
+                        <h2> Denúncias Recentes </h2>
 
+                        {denuncias.map((denuncia) => (
+                            <CardDenuncia
+                            key={denuncia.id}
+                            id={denuncia.id}
+                            titulo={denuncia.titulo}
+                            bairro={denuncia.bairro}
+                            status={denuncia.status}
+                            descricao={denuncia.descricao}
+                            />
+                        ))}
                     </div>
 
                     <SobreNos />
-
                 </section>
 
                 <section id="denuncia">
-                    <h2>Registrar Ocorrência</h2>
-                    <FormularioDenuncia />
+                        <h2> Registrar Ocorrências </h2>
+
+                        <FormularioDenuncia />
                 </section>
             </main>
 

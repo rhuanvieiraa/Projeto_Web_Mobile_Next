@@ -4,11 +4,24 @@ Caio Borges Morato - RA: 10437025
 Felipe Del Giudice Menezes - RA: 10726771
 */
 
+"use client";
+
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CardDenuncia from "../components/CardDenuncia";
 
 export default function MinhasDenuncias() {
+    const [denuncias, setDenuncias] = useState([]);
+
+    useEffect(() => {
+        fetch("/api/denuncias")
+            .then((resposta) => resposta.json())
+            .then((dados) => {
+                setDenuncias(dados);
+            });
+    }, []);
+
     return (
         <>
             <Header />
@@ -17,25 +30,18 @@ export default function MinhasDenuncias() {
                 <section id="historico">
                     <h1>Denúncias realizadas</h1>
 
-                    <CardDenuncia
-                        id={1}
-                        titulo = "Buraco na via principal"
-                        protocolo = "#2026001"
-                        data = "10/03/2026"
-                        status = "Pendente"
-                        descricao = "Existe um buraco na pista provocando risco aos motoristas e ciclistas."
-                    />
-
-                    <CardDenuncia
-                        id={2}  
-                        titulo = "Vazamento de água"
-                        protocolo = "#2026002"
-                        data = "15/03/2026"
-                        status = "Resolvido"
-                        descricao = "Vazamento próximo a calçada principal do bairro."
-                    />
-
-                    <div id="lista-denuncias"></div>
+                    {denuncias.map((denuncia) => (
+                        <CardDenuncia
+                            key={denuncia.id}
+                            id={denuncia.id}
+                            titulo={denuncia.titulo}
+                            protocolo={denuncia.protocolo}
+                            data={denuncia.data}
+                            bairro={denuncia.bairro}
+                            status={denuncia.status}
+                            descricao={denuncia.descricao}
+                        />
+                    ))}
                 </section>
             </main>
 
