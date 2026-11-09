@@ -1,3 +1,11 @@
+/*
+Rhuan Vieira de Souza - RA: 10755828
+Caio Borges Morato - RA: 10437025
+Felipe Del Giudice Menezes - RA: 10726771
+*/
+
+import Link from "next/link";
+
 export default function CardDenuncia(props) {
     return (
         <article className="card-denuncia">
@@ -19,9 +27,9 @@ export default function CardDenuncia(props) {
 
             <p>{props.descricao}</p>
 
-            <a href={`/denuncias/${props.id}`}>
+            <Link href={`/denuncias/${props.id}`}>
                 Ver detalhes
-            </a>
+            </Link>
         </article>
     );
 }

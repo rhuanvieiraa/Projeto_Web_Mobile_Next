@@ -7,6 +7,7 @@ Felipe Del Giudice Menezes - RA: 10726771
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Header() {
     const [menuAberto, setMenuAberto] = useState(false);
@@ -28,7 +29,9 @@ export default function Header() {
         setMenuAberto(false);
     }
 
-    function sair() {
+    function sair(event) {
+        event.preventDefault();
+
         localStorage.removeItem("logado");
         setUsuarioLogado(false);
 
@@ -57,21 +60,21 @@ export default function Header() {
 
                 <ul>
                     <li>
-                        <a href="/" onClick={fecharMenu}>
+                        <Link href="/" onClick={fecharMenu}>
                             Página Inicial
-                        </a>
+                        </Link>
                     </li>
 
                     <li>
-                        <a href="/denuncia" onClick={fecharMenu}>
+                        <Link href="/denuncia" onClick={fecharMenu}>
                             Criar Denúncia
-                        </a>
+                        </Link>
                     </li>
 
                     <li>
-                        <a href="/minhas-denuncias" onClick={fecharMenu}>
+                        <Link href="/minhas-denuncias" onClick={fecharMenu}>
                             Denúncias
-                        </a>
+                        </Link>
                     </li>
 
                     {usuarioLogado ? (
@@ -82,9 +85,9 @@ export default function Header() {
                         </li>
                     ) : (
                         <li>
-                            <a href="/login" onClick={fecharMenu}>
+                            <Link href="/login" onClick={fecharMenu}>
                                 Login
-                            </a>
+                            </Link>
                         </li>
                     )}
                 </ul>
