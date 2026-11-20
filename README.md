@@ -12,11 +12,11 @@ Entre os problemas que podem ser registrados estão:
 - problemas de sinalização;
 - outras ocorrências relacionadas à infraestrutura urbana.
 
-No Projeto 2, a proposta foi mantida, porém a aplicação está sendo migrada para **React com Next.js**.
+No Projeto 2, a proposta foi mantida, porém a aplicação foi migrada para **React com Next.js**.
 
-Essa migração permite melhorar a organização do código, reutilizar componentes, utilizar rotas do Next.js e trabalhar com dados através de uma API interna.
+Essa migração permitiu melhorar a organização do código, reutilizar componentes, utilizar rotas do Next.js e trabalhar com dados através de uma API interna.
 
-O projeto ainda está em desenvolvimento e este README apresenta o que foi realizado até o momento.
+Este README apresenta o processo de desenvolvimento, as funcionalidades implementadas, os principais conceitos utilizados e as instruções para executar o projeto.
 
 ---
 
@@ -48,10 +48,11 @@ Situações como buracos nas ruas, postes sem iluminação, lixo acumulado e pro
 
 A proposta do projeto é disponibilizar uma interface simples na qual o usuário possa visualizar ocorrências e registrar informações sobre problemas encontrados na cidade.
 
-Até o momento, o sistema possui funcionalidades relacionadas a:
+O sistema possui funcionalidades relacionadas a:
 
 - visualização de denúncias recentes;
 - formulário para registro de uma nova ocorrência;
+- cadastro temporário de denúncias;
 - visualização das denúncias;
 - acesso aos detalhes de cada denúncia;
 - simulação de cadastro e login de usuário;
@@ -137,7 +138,7 @@ O wireframe foi utilizado como referência para manter a organização visual do
 
 ## 6. Tecnologias Utilizadas
 
-Até o momento, o Projeto 2 utiliza:
+O Projeto 2 utiliza:
 
 - HTML através de JSX;
 - CSS;
@@ -149,7 +150,7 @@ Até o momento, o Projeto 2 utiliza:
 - Git;
 - GitHub.
 
-Versões utilizadas atualmente no projeto:
+Versões utilizadas no projeto:
 
 - Next.js 16.4.3;
 - React 19.3.0;
@@ -193,6 +194,10 @@ Também foi necessário:
 - transformar páginas HTML em arquivos `page.js`;
 - separar elementos repetidos em componentes;
 - migrar funcionalidades do JavaScript tradicional para recursos do React.
+
+A principal vantagem dessa migração foi a possibilidade de organizar partes da interface em componentes reutilizáveis.
+
+Dessa forma, elementos como cabeçalho, rodapé, cards e formulários passaram a ser separados em arquivos específicos, facilitando a organização e a manutenção do código.
 
 ---
 
@@ -397,7 +402,7 @@ No componente `CardDenuncia`, o identificador é utilizado para criar dinamicame
 
 ### Check-in 5 - API, JSON e Fetch
 
-Na etapa atual, começamos a trabalhar com uma API interna utilizando o Next.js.
+No Check-in 5, implementamos uma API interna utilizando o Next.js.
 
 Os dados das denúncias foram separados da interface e organizados no arquivo:
 
@@ -407,7 +412,7 @@ src/lib/db.js
 
 Também foram criadas rotas de API utilizando arquivos `route.js`.
 
-Atualmente existem duas rotas `GET`:
+Inicialmente, foram implementadas duas rotas `GET`:
 
 ```text
 GET /api/denuncias
@@ -432,11 +437,19 @@ Esses dados passaram a ser consumidos pela interface utilizando:
 
 Com isso, as denúncias não precisam mais ser escritas manualmente em cada página.
 
+Além das rotas GET, também implementamos o método POST na API interna do Next.js.
+
+O POST foi utilizado para receber os dados preenchidos no formulário de denúncia e adicionar uma nova ocorrência ao array armazenado em memória.
+
+Com isso, a aplicação passou a permitir o cadastro temporário de denúncias, além da consulta dos dados já existentes.
+
+Após o cadastro, a nova ocorrência pode ser visualizada na listagem e acessada através da rota dinâmica de detalhes.
+
 ---
 
 ## 9. Login e Cadastro
 
-O projeto possui atualmente uma simulação de cadastro e login.
+O projeto possui uma simulação de cadastro e login.
 
 O cadastro utiliza `localStorage` para armazenar os dados do usuário no navegador.
 
@@ -490,6 +503,10 @@ Sair
 ```
 
 Ao clicar em sair, a informação de login é removida do `localStorage`.
+
+Após a validação dos dados, o usuário é redirecionado para a página inicial utilizando `router.push("/")`, disponibilizado pelo Hook `useRouter` do Next.js.
+
+Esse redirecionamento permite que o cabeçalho seja atualizado conforme o estado de login armazenado no `localStorage`.
 
 Esse sistema é apenas uma **simulação acadêmica de autenticação**.
 
@@ -553,11 +570,27 @@ const novaDenuncia = {
 };
 ```
 
-Atualmente, o formulário demonstra o funcionamento dos estados e do envio utilizando React.
+Atualmente, o formulário utiliza `useState` para controlar os campos e `fetch` para enviar os dados à API interna do Next.js.
 
-A nova denúncia ainda **não é enviada para a API e não é armazenada permanentemente**.
+Quando o usuário clica em **Publicar Ocorrência**, o formulário realiza uma requisição POST para `/api/denuncias`.
 
-O campo para selecionar uma foto também está presente na interface, porém a imagem ainda não é armazenada.
+```javascript
+const resposta = await fetch("/api/denuncias", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(novaDenuncia)
+});
+```
+
+O `JSON.stringify()` transforma o objeto JavaScript em texto JSON para enviá-lo na requisição.
+
+Quando a API confirma o cadastro, o sistema exibe uma mensagem de sucesso e redireciona o usuário para a página Minhas Denúncias.
+
+Também foi implementado o estado `enviando`, que desabilita temporariamente o botão durante o envio, evitando múltiplos cliques.
+
+O campo de foto continua presente, mas as imagens selecionadas ainda não são enviadas ou armazenadas.
 
 ---
 
@@ -697,6 +730,35 @@ export async function GET() {
 
 O arquivo importa as denúncias e utiliza `Response.json()` para retornar os dados em formato JSON.
 
+### POST — Cadastro de Denúncias
+
+Além do GET, foi implementado o método POST no arquivo:
+
+```text
+src/app/api/denuncias/route.js
+```
+
+O POST recebe os dados enviados pelo formulário através de `request.json()`.
+
+Antes de adicionar a ocorrência, a API verifica se os campos obrigatórios foram preenchidos.
+
+Também são gerados automaticamente:
+
+- ID da denúncia;
+- protocolo;
+- data de registro;
+- status inicial "Pendente".
+
+A nova denúncia é adicionada ao array utilizando:
+
+```javascript
+denuncias.push(novaDenuncia);
+```
+
+Após o cadastro, a API retorna a denúncia criada em JSON, com status HTTP `201`, indicando que o recurso foi criado.
+
+Os dados são armazenados temporariamente em memória, sem utilização de um banco de dados.
+
 ---
 
 ## 14. API Dinâmica por ID
@@ -760,7 +822,7 @@ Isso pode ser testado acessando, por exemplo:
 
 ## 15. Fonte de Dados
 
-Os dados utilizados pela API estão atualmente organizados em:
+Os dados utilizados pela API estão organizados em:
 
 ```text
 src/lib/db.js
@@ -803,11 +865,13 @@ Cada denúncia é representada por um objeto contendo informações como:
 - status;
 - descrição.
 
-Atualmente, esses dados são fixos.
+O arquivo `db.js` contém as denúncias iniciais utilizadas pela aplicação.
 
-Não existe banco de dados conectado ao projeto.
+Além desses registros, novas denúncias podem ser adicionadas ao array através do método POST da API.
 
-O arquivo `db.js` está sendo utilizado para representar uma fonte de dados simples durante o aprendizado sobre APIs.
+Essa abordagem permite praticar o cadastro e a consulta de dados sem utilizar um banco de dados externo.
+
+Entretanto, os novos registros são armazenados apenas em memória e podem ser perdidos quando o servidor reinicia.
 
 ---
 
@@ -987,7 +1051,7 @@ Denúncia não encontrada
 
 ## 19. Estrutura Atual do Projeto
 
-A estrutura principal do projeto está organizada atualmente da seguinte forma:
+A estrutura principal do projeto está organizada da seguinte forma:
 
 ```text
 conecta-cidade-next/
@@ -1136,11 +1200,28 @@ Nesse caso, a API retorna:
 }
 ```
 
+### Testando o Cadastro com POST
+
+O método POST pode ser testado utilizando o formulário da aplicação.
+
+Para realizar o teste:
+
+1. Acessar `/denuncia`.
+2. Preencher os campos obrigatórios.
+3. Clicar em **Publicar Ocorrência**.
+4. Aguardar a confirmação do cadastro.
+5. Verificar se a denúncia aparece em `/minhas-denuncias`.
+6. Clicar em **Ver detalhes** para conferir os dados.
+
+Durante os testes, cadastramos uma denúncia de exemplo com o título "Teste", bairro "Alphaville" e status "Pendente".
+
+A denúncia apareceu corretamente na listagem e na página dinâmica de detalhes, demonstrando o funcionamento integrado dos métodos POST e GET no ambiente testado.
+
 ---
 
 ## 22. Andamento Atual
 
-Até o momento, o Projeto 2 possui:
+O Projeto 2 possui:
 
 - estrutura criada com React e Next.js;
 - páginas do Projeto 1 migradas para JSX;
@@ -1163,43 +1244,49 @@ Até o momento, o Projeto 2 possui:
 - consumo da API utilizando `fetch`;
 - renderização das denúncias utilizando `.map()`;
 - página de detalhes carregando os dados de acordo com o ID da denúncia;
-- tratamento de ID de denúncia inexistente.
-
-O projeto continua em desenvolvimento e novas funcionalidades ainda serão implementadas durante as próximas etapas da disciplina.
+- tratamento de ID de denúncia inexistente;
+- implementação do método POST na API;
+- envio de novas denúncias utilizando `fetch`;
+- validação dos campos obrigatórios na API;
+- geração automática de ID, protocolo e data;
+- armazenamento temporário das novas denúncias em memória;
+- redirecionamento após o cadastro;
+- exibição das denúncias cadastradas na listagem;
+- visualização dos detalhes das novas denúncias;
+- realização de testes de cadastro e consulta;
+- compilação de produção realizada com sucesso utilizando `npm run build`.
 
 ---
 
 ## 23. Limitações Atuais
 
-Como o projeto ainda está sendo desenvolvido, algumas funcionalidades ainda são simplificadas.
+Como o projeto foi desenvolvido para fins acadêmicos, algumas funcionalidades utilizam implementações simplificadas.
 
 ### Login e Cadastro
 
 O cadastro e o login utilizam `localStorage` como uma simulação acadêmica.
 
-Ainda não existe autenticação real ou banco de dados para usuários.
+Não existe autenticação real ou banco de dados para usuários.
 
 ### Cadastro de Denúncias
 
-O formulário utiliza `useState` e cria um objeto com as informações preenchidas.
+O formulário permite cadastrar novas denúncias através da API interna utilizando o método POST.
 
-Porém, uma nova denúncia ainda não é enviada para a API e não é armazenada permanentemente.
+Entretanto, os dados ainda não são armazenados permanentemente, pois não existe banco de dados conectado à aplicação.
 
 ### Dados das Denúncias
 
-Atualmente, as denúncias utilizadas pela API estão armazenadas em:
+Os registros iniciais estão definidos no arquivo `src/lib/db.js`.
 
-```text
-src/lib/db.js
-```
+Novas denúncias podem ser adicionadas ao array em memória durante a execução do servidor.
 
-Os dados são fixos e ainda não existe um banco de dados conectado ao projeto.
+Por isso, os registros adicionados podem desaparecer quando o servidor for reiniciado.
 
 ### Imagens
 
 O formulário possui um campo para selecionar uma imagem, porém a imagem ainda não é armazenada.
 
-Esses pontos representam o estado atual da aplicação e poderão ser alterados conforme o desenvolvimento do projeto e os conteúdos das próximas aulas.
+Essas limitações representam funcionalidades que poderiam ser ampliadas em uma versão futura do sistema.
 
 ---
 
@@ -1255,7 +1342,7 @@ A IA foi utilizada para:
 
 ### Check-in 5
 
-Até o momento, durante o desenvolvimento do Check-in 5, a IA foi utilizada para:
+Durante o desenvolvimento do Check-in 5, a IA foi utilizada para:
 
 - auxiliar na organização da API interna;
 - orientar a criação dos arquivos `route.js`;
@@ -1269,15 +1356,18 @@ Até o momento, durante o desenvolvimento do Check-in 5, a IA foi utilizada para
 - auxiliar na identificação e correção de problemas relacionados à estrutura das pastas;
 - auxiliar na identificação do conflito entre `page.js` e `route.js`;
 - auxiliar nos testes das rotas da API;
-- auxiliar no tratamento de uma denúncia não encontrada.
+- auxiliar no tratamento de uma denúncia não encontrada;
+- auxiliar na integração do formulário com a API interna;
+- orientar a utilização de `fetch` para envio de dados;
+- orientar o tratamento de erros no envio de denúncias.
 
-Esta seção continuará sendo atualizada conforme o desenvolvimento do projeto.
+O uso de Inteligência Artificial foi realizado como ferramenta de apoio ao desenvolvimento, mantendo a responsabilidade do grupo sobre a compreensão e apresentação do código.
 
 ---
 
 ## 25. Aprendizados até o Momento
 
-Durante o desenvolvimento do Projeto 2 até esta etapa, foram aplicados conteúdos estudados durante a disciplina.
+Durante o desenvolvimento do Projeto 2, foram aplicados conteúdos estudados durante a disciplina.
 
 Entre os principais conceitos utilizados estão:
 
@@ -1305,13 +1395,18 @@ Entre os principais conceitos utilizados estão:
 - tratamento de registros através de ID;
 - organização de dados em um arquivo separado;
 - organização de páginas e componentes;
-- Git e GitHub.
+- Git e GitHub;
+- método HTTP `POST`;
+- envio de dados utilizando `fetch`;
+- validação de dados recebidos pela API;
+- geração automática de identificadores;
+- execução de testes com ESLint e build de produção.
 
 Uma das principais diferenças percebidas em relação ao Projeto 1 foi a organização do código.
 
 No Projeto 1, diversas estruturas e funcionalidades estavam diretamente ligadas às páginas HTML e ao JavaScript tradicional.
 
-Com React e Next.js, essas responsabilidades começaram a ser separadas entre:
+Com React e Next.js, essas responsabilidades passaram a ser separadas entre:
 
 - páginas;
 - componentes;
@@ -1323,12 +1418,24 @@ Com React e Next.js, essas responsabilidades começaram a ser separadas entre:
 
 Essa separação facilita a reutilização de partes da aplicação e ajuda a entender melhor a responsabilidade de cada arquivo.
 
+Durante os testes finais, também foi possível compreender melhor a importância de verificar o funcionamento da aplicação e identificar erros durante a compilação.
+
+O comando `npm run build` foi executado com sucesso, confirmando que o projeto conseguiu gerar sua versão de produção.
+
 ---
 
 ## 26. Próximas Etapas
 
-O Conecta Cidade ainda está em desenvolvimento.
+A implementação principal do Conecta Cidade para o Projeto 2 foi concluída, atendendo aos requisitos de componentização, interatividade, rotas e consumo de API previstos para a disciplina.
 
-As próximas alterações serão realizadas de acordo com os conteúdos apresentados durante as próximas aulas e com os requisitos das próximas etapas do projeto.
+Como o projeto possui finalidade acadêmica, algumas funcionalidades foram desenvolvidas de forma simplificada, principalmente o armazenamento temporário das denúncias e a simulação de login.
 
-O README também continuará sendo atualizado para registrar o desenvolvimento e explicar as novas funcionalidades implementadas.
+Em uma possível evolução futura, o projeto poderia receber:
+
+- banco de dados para armazenamento permanente;
+- autenticação real de usuários;
+- armazenamento de imagens;
+- edição e exclusão de denúncias;
+- atualização do status das ocorrências.
+
+Essas funcionalidades não fazem parte da implementação atual, mas representam possibilidades de evolução do Conecta Cidade.
