@@ -1423,19 +1423,3 @@ Durante os testes finais, também foi possível compreender melhor a importânci
 O comando `npm run build` foi executado com sucesso, confirmando que o projeto conseguiu gerar sua versão de produção.
 
 ---
-
-## 26. Próximas Etapas
-
-A implementação principal do Conecta Cidade para o Projeto 2 foi concluída, atendendo aos requisitos de componentização, interatividade, rotas e consumo de API previstos para a disciplina.
-
-Como o projeto possui finalidade acadêmica, algumas funcionalidades foram desenvolvidas de forma simplificada, principalmente o armazenamento temporário das denúncias e a simulação de login.
-
-Em uma possível evolução futura, o projeto poderia receber:
-
-- banco de dados para armazenamento permanente;
-- autenticação real de usuários;
-- armazenamento de imagens;
-- edição e exclusão de denúncias;
-- atualização do status das ocorrências.
-
-Essas funcionalidades não fazem parte da implementação atual, mas representam possibilidades de evolução do Conecta Cidade.
