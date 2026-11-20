@@ -6,9 +6,12 @@ Felipe Del Giudice Menezes - RA: 10726771
 
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function FormLogin() {
+    const router = useRouter();
+
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
@@ -29,13 +32,12 @@ export default function FormLogin() {
 
         const usuario = JSON.parse(usuarioSalvo);
 
-        if (email === usuario.email && senha === usuario.senha) {
+        if (email === usuario.email && senha === usuario.senha){
             localStorage.setItem("logado", "true");
+            
+            alert("Login realizado com sucesso");
 
-            alert("Login realizado com sucesso!");
-
-            setEmail("");
-            setSenha("");
+            router.push("/");
         } else {
             alert("E-mail ou senha incorretos.");
         }

@@ -7,9 +7,14 @@ Felipe Del Giudice Menezes - RA: 10726771
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../../../public/imagens/conecta-cabecalho.png";
 
 export default function Header() {
+    const router = useRouter();
+
     const [menuAberto, setMenuAberto] = useState(false);
     const [usuarioLogado, setUsuarioLogado] = useState(false);
 
@@ -37,14 +42,16 @@ export default function Header() {
 
         alert("Logout realizado com sucesso!");
 
-        window.location.href = "/";
+        router.push("/");
     }
 
     return (
         <header id="top">
-            <img
-                src="/imagens/conecta-cabecalho.png"
-                alt="Logo Conecta Cidade"/>
+            <Image
+                src={logo}
+                alt="Logo Conecta Cidade"
+                priority
+            />
 
             <button
                 id="menu-btn"
