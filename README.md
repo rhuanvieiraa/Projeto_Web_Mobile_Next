@@ -191,13 +191,64 @@ Também foi necessário:
 - fechar corretamente as tags utilizadas em JSX;
 - adaptar os caminhos das imagens;
 - organizar as imagens dentro da pasta `public`;
-- transformar páginas HTML em arquivos `page.js`;
+- transformar páginas HTML em arquivos `page.jsx`;
 - separar elementos repetidos em componentes;
 - migrar funcionalidades do JavaScript tradicional para recursos do React.
 
-A principal vantagem dessa migração foi a possibilidade de organizar partes da interface em componentes reutilizáveis.
+### Padronização dos Arquivos
 
-Dessa forma, elementos como cabeçalho, rodapé, cards e formulários passaram a ser separados em arquivos específicos, facilitando a organização e a manutenção do código.
+Após o feedback da Entrega 4, realizamos uma revisão na organização dos arquivos do projeto.
+
+Padronizamos os arquivos responsáveis pela interface visual utilizando a extensão `.jsx`, incluindo:
+
+- páginas `page.jsx`;
+- arquivo `layout.jsx`;
+- componentes React, como `Header.jsx`, `Footer.jsx` e `CardDenuncia.jsx`.
+
+Os arquivos responsáveis pela API e pelo armazenamento dos dados permaneceram com a extensão `.js`, como:
+
+- `src/app/api/denuncias/route.js`;
+- `src/app/api/denuncias/[id]/route.js`;
+- `src/lib/db.js`.
+
+Essa organização foi adotada para diferenciar os arquivos que contêm JSX daqueles utilizados principalmente para lógica JavaScript e manipulação de dados.
+
+### Revisão das Estruturas JSX
+
+Também revisamos os React Fragments (`<> </>`) utilizados para agrupar os elementos das páginas.
+
+Essas estruturas foram substituídas por uma `<div>` com a classe `pagina`, agrupando os componentes `Header`, `main` e `Footer`.
+
+Exemplo:
+
+```jsx
+return (
+    <div className="pagina">
+        <Header />
+
+        <main>
+            <h1>Conteúdo da página</h1>
+        </main>
+
+        <Footer />
+    </div>
+);
+```
+
+Para manter a organização visual após essa alteração, adicionamos a seguinte classe ao arquivo `src/app/globals.css`:
+
+```css
+.pagina {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+```
+
+Após as alterações, realizamos testes de navegação e execução da aplicação, verificando que as páginas continuaram funcionando corretamente.
+
+A padronização ajudou a manter uma estrutura de arquivos mais consistente e organizada, atendendo às observações realizadas pela professora.
 
 ---
 
@@ -1158,64 +1209,28 @@ O projeto também pode ser executado utilizando GitHub Codespaces.
 
 ---
 
-## 21. Como Testar a API
+## 21. Testes Funcionais da Aplicação.
 
-Com o projeto executando, os endpoints podem ser acessados diretamente pelo navegador.
+Após os ajustes finais, realizamos testes de funcionamento para verificar a navegação e a integração entre os componentes.
 
-### Todas as denúncias
+Foram testados:
 
-```text
-http://localhost:3000/api/denuncias
-```
+- navegação entre as páginas;
+- exibição das denúncias iniciais;
+- cadastro de novas ocorrências;
+- listagem das denúncias cadastradas;
+- visualização dos detalhes;
+- cadastro e login de usuários;
+- logout;
+- validação dos formulários;
+- funcionamento dos links e do rodapé;
+- organização visual das páginas.
 
-Essa rota retorna um array contendo todas as denúncias.
+Os testes foram concluídos com sucesso no ambiente
+de desenvolvimento utilizado pelo grupo.
 
-### Denúncia de ID 1
-
-```text
-http://localhost:3000/api/denuncias/1
-```
-
-Essa rota retorna somente a denúncia de ID 1.
-
-### Denúncia de ID 2
-
-```text
-http://localhost:3000/api/denuncias/2
-```
-
-Essa rota retorna somente a denúncia de ID 2.
-
-### ID inexistente
-
-```text
-http://localhost:3000/api/denuncias/50
-```
-
-Nesse caso, a API retorna:
-
-```json
-{
-    "erro": "Denúncia não encontrada"
-}
-```
-
-### Testando o Cadastro com POST
-
-O método POST pode ser testado utilizando o formulário da aplicação.
-
-Para realizar o teste:
-
-1. Acessar `/denuncia`.
-2. Preencher os campos obrigatórios.
-3. Clicar em **Publicar Ocorrência**.
-4. Aguardar a confirmação do cadastro.
-5. Verificar se a denúncia aparece em `/minhas-denuncias`.
-6. Clicar em **Ver detalhes** para conferir os dados.
-
-Durante os testes, cadastramos uma denúncia de exemplo com o título "Teste", bairro "Alphaville" e status "Pendente".
-
-A denúncia apareceu corretamente na listagem e na página dinâmica de detalhes, demonstrando o funcionamento integrado dos métodos POST e GET no ambiente testado.
+Também executamos `npm run build`, que finalizou
+a compilação de produção sem erros.
 
 ---
 
@@ -1249,12 +1264,11 @@ O Projeto 2 possui:
 - envio de novas denúncias utilizando `fetch`;
 - validação dos campos obrigatórios na API;
 - geração automática de ID, protocolo e data;
-- armazenamento temporário das novas denúncias em memória;
-- redirecionamento após o cadastro;
-- exibição das denúncias cadastradas na listagem;
-- visualização dos detalhes das novas denúncias;
-- realização de testes de cadastro e consulta;
-- compilação de produção realizada com sucesso utilizando `npm run build`.
+- padronização dos arquivos `.js` e `.jsx`;
+- revisão das estruturas JSX das páginas;
+- substituição dos Fragments por elementos de agrupamento;
+- testes funcionais de navegação, cadastro, login e denúncias;
+- validação final do projeto utilizando `npm run build`.
 
 ---
 
