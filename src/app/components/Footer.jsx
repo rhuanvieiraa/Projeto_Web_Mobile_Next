@@ -8,11 +8,10 @@ export default function Footer() {
     return (
         <footer>
             <div className="footer-links">
-                <a href="#">Contato</a>
                 <a href="#top">Voltar ao Início</a>
             </div>
 
-            <p> © 2026 Conecta Cidade - Projeto Extensionista </p>
+            <p>© 2026 Conecta Cidade - Projeto Extensionista</p>
         </footer>
     );
 }
