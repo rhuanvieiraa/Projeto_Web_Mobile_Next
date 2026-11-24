@@ -11,7 +11,7 @@ import FormCadastro from "../components/FormCadastro";
 
 export default function Login() {
     return (
-        <>
+        <div className="pagina">
             <Header />
 
             <main>
@@ -31,6 +31,6 @@ export default function Login() {
             </main>
 
             <Footer />
-        </>
+        </div>
     );
 }

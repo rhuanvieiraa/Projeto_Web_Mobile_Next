@@ -12,7 +12,7 @@ export default async function Detalhe({ params }) {
     const { id } = await params;
 
     return (
-        <>
+        <div className="pagina">
             <Header />
 
             <main> 
@@ -20,6 +20,6 @@ export default async function Detalhe({ params }) {
             </main>
 
             <Footer />
-        </>
+        </div>
     );
 }

@@ -10,7 +10,7 @@ import FormularioDenuncia from "../components/FormularioDenuncia";
 
 export default function Denuncia() {
     return (
-        <>
+        <div className="pagina">
             <Header />
 
             <main className="pagina-denuncia">
@@ -18,6 +18,6 @@ export default function Denuncia() {
             </main>
 
             <Footer />
-        </>
+        </div>
     );
 }

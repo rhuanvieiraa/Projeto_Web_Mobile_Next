@@ -23,7 +23,7 @@ export default function MinhasDenuncias() {
     }, []);
 
     return (
-        <>
+        <div className="pagina">
             <Header />
 
             <main>
@@ -46,6 +46,6 @@ export default function MinhasDenuncias() {
             </main>
 
             <Footer />
-        </>
+        </div>
     );
 }

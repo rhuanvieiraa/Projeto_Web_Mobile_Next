@@ -26,7 +26,7 @@ export default function Home() {
     },[]);
 
     return (
-        <>
+        <div className="pagina">
             <Header />
 
             <main>
@@ -59,6 +59,6 @@ export default function Home() {
             </main>
 
             <Footer />
-        </>
+        </div>
     );
 }
